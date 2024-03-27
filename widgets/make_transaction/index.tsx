@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 import React from "react";
 import useTransaction from "./useTransaction";
 
-export default function Transaction() {
+export default function MakeTransaction() {
   const [walletAddress, amount, handleChangeWalletAddress, handleChangeAmount] = useTransaction();
   return (
     <Container maxWidth="sm">

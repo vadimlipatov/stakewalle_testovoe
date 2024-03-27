@@ -4,8 +4,8 @@ import React from "react";
 
 export default function WalletInfo() {
   return (
-    <Container maxWidth="sm">
+    <>
       <WalletBalance />
-    </Container>
+    </>
   );
 }
