@@ -11,7 +11,7 @@ import {
 import { useChangeNetwork } from "./useChangeNetwork";
 
 export const ChangeWalletNetwork = () => {
-  const [network, handleChangeNetwork, loading] = useChangeNetwork();
+  const [network, loading, handleChangeNetwork] = useChangeNetwork();
 
   return (
     <>

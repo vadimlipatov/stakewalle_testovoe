@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 
-export function useWalletBalance(): [string, string, string, boolean] {
+export function useWalletBalance() {
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [ethBalance, setEthBalance] = useState<string>("");
   const [bnbBalance, setBnbBalance] = useState<string>("");
@@ -60,5 +60,5 @@ export function useWalletBalance(): [string, string, string, boolean] {
     }
   }, []);
 
-  return [walletAddress, ethBalance, bnbBalance, loading];
+  return [walletAddress, ethBalance, bnbBalance, loading] as const;
 }

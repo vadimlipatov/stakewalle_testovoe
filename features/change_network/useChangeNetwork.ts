@@ -2,11 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-export function useChangeNetwork(): [
-  string,
-  (event: React.ChangeEvent<HTMLInputElement>) => void,
-  boolean
-] {
+export const  useChangeNetwork = () => {
   const [network, setNetwork] = useState<string>(""); // 'bsc_mainnet'
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -82,5 +78,5 @@ export function useChangeNetwork(): [
     init();
   }, []);
 
-  return [network, handleChangeNetwork, loading];
+  return [network, loading, handleChangeNetwork] as const;
 }

@@ -3,10 +3,7 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 
-export const useSendTransactionButton = (
-  walletAddress: string,
-  amount: string
-): [boolean, string, () => void] => {
+export const useSendTransactionButton = (walletAddress: string, amount: string) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -49,5 +46,5 @@ export const useSendTransactionButton = (
     }
   };
 
-  return [loading, error, handleSendTransaction];
+  return [loading, error, handleSendTransaction] as const;
 };
