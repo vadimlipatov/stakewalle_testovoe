@@ -3,8 +3,11 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 
-export const useSendTransactionButton = (walletAddress: string, amount: string) => {
-  const [loading, setLoading] = useState(false);
+export const useSendTransactionButton = (
+  walletAddress: string,
+  amount: string
+): [boolean, string, () => void] => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   async function sendTransaction(toWalletAddress: string, amount: string): Promise<void> {

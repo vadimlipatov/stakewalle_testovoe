@@ -14,7 +14,13 @@ export const SendTransactionButton = ({
 
   return (
     <>
-      <Button sx={{mt: 1}} variant="contained" color="primary" onClick={handleSendTransaction} fullWidth>
+      <Button
+        sx={{ mt: 1 }}
+        variant="contained"
+        color="primary"
+        onClick={handleSendTransaction}
+        fullWidth
+      >
         {loading ? "Pending...Check MetaMask" : "Send Transaction"}
       </Button>
 

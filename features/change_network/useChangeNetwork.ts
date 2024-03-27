@@ -2,9 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 
-export function useChangeNetwork() {
-  const [network, setNetwork] = useState(""); // 'bsc_mainnet'
-  const [loading, setLoading] = useState(true);
+export function useChangeNetwork(): [
+  string,
+  (event: React.ChangeEvent<HTMLInputElement>) => void,
+  boolean
+] {
+  const [network, setNetwork] = useState<string>(""); // 'bsc_mainnet'
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleChangeNetwork = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const networkName = event.target.value;

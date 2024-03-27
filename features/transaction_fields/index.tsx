@@ -12,8 +12,8 @@ const TransactionFields = ({
 }: {
   walletAddress: string;
   amount: string;
-  handleChangeAmount: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleChangeWalletAddress: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleChangeAmount: (event: ChangeEvent<HTMLInputElement>) => {};
+  handleChangeWalletAddress: (event: ChangeEvent<HTMLInputElement>) => {};
 }) => {
   const [selectedCoin, handleSelectChange] = useTransactionFields();
 

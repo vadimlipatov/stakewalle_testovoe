@@ -4,7 +4,6 @@ import { Box, Grid, Container, Alert, Link } from "@mui/material";
 import { WalletBalance } from "@/features/wallet_balance";
 import useWallet from "./useWallet";
 import Transaction from "@/widgets/transaction";
-import { DarkModeSwitch } from "@/features/theme_switcher";
 
 export default function WalletPage() {
   const [isMetaMask] = useWallet();
