@@ -1,13 +1,10 @@
-"use client";
-
-import WalletPage from "@/pages/wallet";
-import { useState } from "react";
+import { AppProps } from "next/app";
 import { DarkModeSwitch } from "@/features/theme_switcher";
-import createTheme from "@mui/material/styles/createTheme";
-import ThemeProvider from "@mui/private-theming/ThemeProvider/ThemeProvider";
+import { useState } from "react";
+import ThemeProvider from "@mui/private-theming/ThemeProvider";
+import createTheme from "@mui/system/createTheme";
 
-export default function Home() {
-  
+function MyApp({ Component, pageProps }: AppProps) {
   const [darkMode, setDarkMode] = useState(false);
 
   const theme = createTheme({
@@ -28,9 +25,10 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <DarkModeSwitch handleDarkModeChange={handleDarkModeChange} darkMode={darkMode} /> */}
-      <WalletPage />;
+      <DarkModeSwitch handleDarkModeChange={handleDarkModeChange} darkMode={darkMode} />
+      <Component {...pageProps} />
     </ThemeProvider>
   );
- 
 }
+
+export default MyApp;
