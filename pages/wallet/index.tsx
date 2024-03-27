@@ -24,12 +24,14 @@ export default function WalletPage() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
       <Grid container spacing={2} alignItems="baseline">
-        <Grid item xs={12} md={6}>
+        <Grid lg={1} xl={2}></Grid>
+        <Grid item xs={12} md={6} lg={5} xl={4}>
           <WalletBalance />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} lg={5} xl={4}>
           <Transaction />
         </Grid>
+        <Grid lg={1} xl={2}></Grid>
       </Grid>
     </Box>
   );
