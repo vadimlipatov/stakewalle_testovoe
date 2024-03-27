@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 
-export const  useChangeNetwork = () => {
+export const useChangeNetwork = () => {
   const [network, setNetwork] = useState<string>(""); // 'bsc_mainnet'
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>('');
 
   const handleChangeNetwork = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const networkName = event.target.value;
@@ -26,17 +27,25 @@ export const  useChangeNetwork = () => {
 
   const getCurrentNetworkName = async () => {
     if (window.ethereum) {
-      // Request MetaMask to enable itself
-      await window.ethereum.enable();
+      try {
+        // Request MetaMask to enable itself
+        // await window.ethereum.enable();
 
-      // Get the current network ID
-      const networkId = window.ethereum.networkVersion;
-      console.log("Network ID:", networkId);
+        const account = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
 
-      // Convert network ID to network name
-      const networkName = mapNetworkIdToNetworkName(networkId);
+        // Get the current network ID
+        const networkId = window.ethereum.networkVersion; // '97'
+        console.log("Network ID:", networkId);
 
-      return networkName;
+        // Convert network ID to network name
+        const networkName = mapNetworkIdToNetworkName(networkId);
+
+        return networkName;
+      } catch (error) {
+        setError("An error occurred. Please reload the page");
+      }
     }
     return "bsc_testnet";
   };
@@ -78,5 +87,5 @@ export const  useChangeNetwork = () => {
     init();
   }, []);
 
-  return [network, loading, handleChangeNetwork] as const;
-}
+  return [network, loading, error, handleChangeNetwork] as const;
+};
